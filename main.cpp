@@ -18,10 +18,17 @@ int main() {
     sf::Clock clock;
     GameState state;
     state.credits = INITIAL_CREDITS;
+    
+    sf::Font font;
+    if (!font.loadFromFile("assets/arial.ttf")) {
+        std::cerr << "Failed to load font\n";
+        return 1;
+    }
 
     sf::Vector2i dragStart(-1, -1);
     sf::Vector2i dragEnd(-1, -1);
     bool isDragging = false;
+
 
     while (window.isOpen()) {
         float dt = clock.restart().asSeconds();
@@ -55,8 +62,8 @@ int main() {
 
         window.clear(sf::Color::Black);
         RenderSystem::drawGrid(window);
-        RenderSystem::drawEntities(window, state.entities);
-        RenderSystem::drawBuildings(window, state.buildings);
+        RenderSystem::drawEntities(window, state.entities, font);
+        RenderSystem::drawBuildings(window, state.buildings, font);
 
         // if (isDragging && dragStart.x >= 0 && dragEnd.x >= 0) {
         //     SelectionSystem::drawSelectionBox(window, isDragging,

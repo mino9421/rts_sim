@@ -9,6 +9,10 @@ constexpr int MAP_HEIGHT = 15;
 // Starting credits
 constexpr int INITIAL_CREDITS = 10000;
 
+// Colors
+const sf::Color playerColor = sf::Color::Green;
+const sf::Color enemyColor = sf::Color::Red;
+
 // Build times (in seconds)
 constexpr float BUILDER_BUILD_TIME = 3.0f;
 constexpr float SOLDIER_PRODUCTION_TIME = 1.5f;

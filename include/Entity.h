@@ -5,6 +5,7 @@
 struct Entity {
     std::string type;
     int x, y;
+    int team = 1;
     int targetX = -1, targetY = -1;
     bool selected = false;
     bool isBuilding = false;

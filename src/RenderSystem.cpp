@@ -7,9 +7,12 @@
 
 namespace RenderSystem {
 
+    const sf::Color playerColor = sf::Color::Green;
+    const sf::Color enemyColor  = sf::Color::Red;
+
     void drawHUD(sf::RenderWindow& window, const GameState& state) {
         static sf::Font font;
-        static bool loaded = font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf");
+        static bool loaded = font.loadFromFile("assets/arial.ttf");
     
         if (!loaded) return;
     
@@ -51,41 +54,71 @@ namespace RenderSystem {
         }
     }
 
-    void drawEntities(sf::RenderWindow& window, const std::vector<Entity>& entities) {
+    void drawEntities(sf::RenderWindow& window, const std::vector<Entity>& entities, const sf::Font& font) {
         for (const auto& e : entities) {
-            sf::RectangleShape shape(sf::Vector2f(TILE_SIZE - 2, TILE_SIZE - 2));
-            shape.setPosition(e.x * TILE_SIZE + 1, e.y * TILE_SIZE + 1);
-
-            if (e.type == "Builder") shape.setFillColor(builderColor);
-            else if (e.type == "Soldier") shape.setFillColor(soldierColor);
+            sf::RectangleShape shape(sf::Vector2f(TILE_SIZE, TILE_SIZE));
+            shape.setPosition(e.x * TILE_SIZE, e.y * TILE_SIZE);
+            shape.setFillColor(e.team == 1 ? playerColor : enemyColor);
 
             if (e.selected) {
-                shape.setOutlineColor(selectedOutline);
+                shape.setOutlineColor(sf::Color::Yellow);
                 shape.setOutlineThickness(2);
+            } else {
+                shape.setOutlineThickness(0); // no outline
             }
-
+        
             window.draw(shape);
-        }
+        
+            // 🔹 Draw letter marker
+            sf::Text label;
+            label.setFont(font);
+            label.setCharacterSize(20);
+            label.setFillColor(sf::Color(200, 50, 255)); // soft bright purple
+            label.setString(
+                e.type == "Builder" ? "b" :
+                e.type == "Soldier" ? "s" : "?"
+            );
+            sf::FloatRect textRect = label.getLocalBounds();
+            label.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
+            label.setPosition(e.x * TILE_SIZE + TILE_SIZE / 2.0f, e.y * TILE_SIZE + TILE_SIZE / 2.0f);
+
+            window.draw(label);
+        }        
     }
 
-    void drawBuildings(sf::RenderWindow& window, const std::vector<Entity>& buildings) {
+    void drawBuildings(sf::RenderWindow& window, const std::vector<Entity>& buildings, const sf::Font& font) {
         for (const auto& b : buildings) {
-            sf::RectangleShape shape(sf::Vector2f(TILE_SIZE - 2, TILE_SIZE - 2));
-            shape.setPosition(b.x * TILE_SIZE + 1, b.y * TILE_SIZE + 1);
-
-            if (b.type == "Barracks") shape.setFillColor(barracksColor);
-            else if (b.type == "Depot") shape.setFillColor(depotColor);
-            else if (b.type == "CommandCenter") shape.setFillColor(ccColor);
+            sf::RectangleShape shape(sf::Vector2f(TILE_SIZE, TILE_SIZE));
+            shape.setPosition(b.x * TILE_SIZE, b.y * TILE_SIZE);
+            shape.setFillColor(b.team == 1 ? playerColor : enemyColor);
 
             if (b.selected) {
-                shape.setOutlineColor(selectedOutline);
+                shape.setOutlineColor(sf::Color::Yellow);
                 shape.setOutlineThickness(2);
+            } else {
+                shape.setOutlineThickness(0);
             }
-
+            
+        
             window.draw(shape);
-        }
+        
+            // 🔹 Draw letter marker
+            sf::Text label;
+            label.setFont(font);
+            label.setCharacterSize(20);
+            label.setFillColor(sf::Color(200, 50, 255)); // soft bright purple
+            label.setStyle(sf::Text::Bold);
+            label.setString(
+                b.type == "CommandCenter" ? "C" :
+                b.type == "Barracks"       ? "B" :
+                b.type == "Depot"          ? "D" : "?"
+            );
+            sf::FloatRect textRect = label.getLocalBounds();
+            label.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
+            label.setPosition(b.x * TILE_SIZE + TILE_SIZE / 2.0f, b.y * TILE_SIZE + TILE_SIZE / 2.0f);
+
+            window.draw(label);
+        }        
     }
 
-
 }
-
