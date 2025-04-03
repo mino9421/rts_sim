@@ -1,6 +1,5 @@
 # ⚔️ Lockstep RTS Prototype
 
-<<<<<<< HEAD
 ## 1. Vision & Goals
 
 > "A 2D RTS game with economic and combat systems, supporting single & future multiplayer."
@@ -22,7 +21,6 @@
 =======
 A lightweight, scalable real-time strategy (RTS) prototype built in C++ with SFML.  
 Designed for single-player with future support for AI opponents and lockstep multiplayer.
->>>>>>> f9e29ef (modified readme and added docs/projectblueprint)
 
 ---
 
@@ -98,7 +96,6 @@ Build a playable RTS framework with essential economic and combat mechanics — 
 ## 1. Vision & Goals
 
 **One-liner Goal:**  
-Describe the core goal of your project.  
 > "A 2D RTS game with economic and combat systems, supporting single & future multiplayer."
 
 **Key MVP Features:**
@@ -253,7 +250,7 @@ Every 3-4 added features:
 
 ---
 
-<<<<<<< HEAD
+
 ## 10. Notes From Architect
 
 - Done well with logic-first planning.
