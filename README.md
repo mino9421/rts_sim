@@ -155,10 +155,10 @@ Every 3-4 added features:
 
 ---
 
-## 10. Notes for the Architect (You)
+## 10. Notes From Architect
 
-- You’ve done well leading with logic-first planning.
-- Stay mindful of clean system names and separation.
+- Done well with logic-first planning.
+- Clean system names and separation.
 - Don’t over-plan AI or Multiplayer too early.
 - Track all future ideas in a markdown TODO file.
 - Don’t forget fun: tweak feedback loops, sounds, etc.
