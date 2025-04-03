@@ -2,8 +2,6 @@
 
 ## 1. Vision & Goals
 
-**One-liner Goal:**  
-Describe the core goal of your project.  
 > "A 2D RTS game with economic and combat systems, supporting single & future multiplayer."
 
 **Key MVP Features:**
