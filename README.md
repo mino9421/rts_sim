@@ -18,7 +18,7 @@
 - Multiplayer system
 - Save/load system
 - Lobby system with color/faction/team picker
-=======
+
 A lightweight, scalable real-time strategy (RTS) prototype built in C++ with SFML.  
 Designed for single-player with future support for AI opponents and lockstep multiplayer.
 
