@@ -263,7 +263,6 @@ Every 3-4 added features:
 
 - Press `]` to toggle player control over enemy units
 - Future plan: `DebugOverlay` (FPS, queued actions, AI state, etc.)
->>>>>>> f9e29ef (modified readme and added docs/projectblueprint)
 
 ---
 
